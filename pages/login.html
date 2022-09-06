@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Moments | Login</title>
+		<link rel="stylesheet" href="/dist/css/style.css" />
+	</head>
+	<body>
+		<main class="vh-100">
+			<!-- Navigation bar -->
+			<header class="sticky-top">
+				<nav class="navbar navbar-expand-lg bg-light">
+					<div class="container-fluid">
+						<a class="navbar-brand fs-1" href="index.html"><h1>Logo</h1></a>
+						<button
+							class="navbar-toggler"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#navbarResponsive"
+							aria-controls="navbarResponsive"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarResponsive">
+							<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link fs-4 px-lg-3 px-xl-5" href="../index.html">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link fs-4 px-lg-3 px-xl-5" href="profile.html">Profile</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link fs-4 px-lg-3 px-xl-5 active" href="login.html">Login</a>
+								</li>
+							</ul>
+							<form class="d-flex" role="search">
+								<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+								<button class="btn btn-outline-success" type="submit">Search</button>
+							</form>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<!-- Add post -->
+			<div class="card text-center m-5">
+				<div class="card-header">Login</div>
+				<div class="card-body">
+					<form>
+						<div class="row g-3">
+							<div class="mb-3 col-12 col-md-6 col-xl-3 mx-auto">
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" class="form-control" id="email" required />
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="mb-3 col-12 col-md-6 col-xl-3 mx-auto">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" class="form-control" id="password" required minlength="8" />
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="mb-3 col-12 col-md-6 col-xl-3 text-start form-check mx-auto">
+								<input type="checkbox" class="form-check-input" id="rememberMe" />
+								<label class="form-check-label" for="rememberMe">Remember me</label>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Login</button>
+						<span> or </span>
+						<a href=""><button class="btn btn-primary">Sign up</button></a>
+					</form>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container-fluid border border-2 fs-3 text-center">Logo</div>
+		</footer>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

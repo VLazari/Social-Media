@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+// scss-docs-start color-variables
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+// scss-docs-end color-variables
+
+$primary: $purple;
+// $secondary:     $gray-600;
+$success: $purple;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+// $light:         $gray-100;
+// $dark:          $gray-900;
+
+h1 {
+	font-family: "Pacifico", cursive;
+	color: $indigo;
+}
+
+li {
+}
