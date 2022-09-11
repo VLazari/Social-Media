@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Moments | Profile</title>
+		<title>Moments</title>
 		<link rel="stylesheet" href="/dist/css/style.css" />
 	</head>
 	<body>
@@ -69,32 +69,36 @@
 			</nav>
 		</header>
 		<main class="main-container mx-auto">
-			<!-- Profile Info -->
-			<div class="card my-2 bg-light">
-				<div>
-					<div class="cover-photo"></div>
-					<div class="d-flex flex-column flex-md-row align-items-center mx-3">
-						<div class="img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
-						<div class="card-body mx-3">
-							<h3>User Name</h3>
-							<h5>Email</h5>
-							<p class="card-text"><small class="text-muted">Day of birth: 08 Mar 1974</small></p>
-						</div>
+			<!-- Add post -->
+			<form class="container-fluid bg-light my-3 p-3 border border-primary rounded border-opacity-25">
+				<div class="d-flex m-2">
+					<div class="mx-3 img"></div>
+					<textarea
+						class="form-control border border-primary rounded border-opacity-25"
+						id="story"
+						placeholder="Share your life moments"
+						rows="1"
+					></textarea>
+				</div>
+				<div class="col-12">
+					<div class="text-center pb-3">
+						<button type="button" class="btn border border-1 border-primary text-primary me-5">Add photo</button>
+						<button type="submit" class="btn btn-primary">Post</button>
 					</div>
 				</div>
-			</div>
+			</form>
 
 			<!-- Feeds -->
 			<div class="d-flex flex-column">
 				<div class="card mx-0 my-3 bg-light border border-primary rounded border-opacity-25">
 					<div class="p-3 d-flex align-items-center">
 						<div class="mx-3 img"></div>
-						<div class="">User name</div>
+						<div>User name</div>
 					</div>
 					<div class="card-body">
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 					</div>
-					<img src="../img/img-demo.jpg" class="card-img-top" />
+					<img src="../img/img-demo.jpg" class="card-img-top" alt="..." />
 
 					<div class="card-body">
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

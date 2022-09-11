@@ -1,10 +1,5 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-h1, .h1 {
-  font-family: "Pacifico", cursive;
-  color: #6610f2;
-}
-
 /*!
  * Bootstrap  v5.2.0 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -10764,156 +10759,57 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.width-25 {
-  width: 25px;
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.width-50 {
-  width: 50px;
+.main-container {
+  max-width: 1000px;
 }
 
-.width-75 {
-  width: 75px;
+h1, .h1 {
+  font-family: "Pacifico", cursive;
+  color: #6610f2;
 }
 
-.width-100 {
-  width: 100px;
+.container {
+  max-width: 1500px;
 }
 
-.width-150 {
+.img,
+.cover-photo {
+  width: 3em;
+  height: 3em;
+  background-image: url("../../img/user-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.prof-img {
   width: 150px;
-}
-
-.width-200 {
-  width: 200px;
-}
-
-.width-250 {
-  width: 250px;
-}
-
-.width-300 {
-  width: 300px;
-}
-
-.width-350 {
-  width: 350px;
-}
-
-.width-400 {
-  width: 400px;
-}
-
-.width-450 {
-  width: 450px;
-}
-
-.width-500 {
-  width: 500px;
-}
-
-.width-550 {
-  width: 550px;
-}
-
-.width-600 {
-  width: 600px;
-}
-
-.width-650 {
-  width: 650px;
-}
-
-.width-700 {
-  width: 700px;
-}
-
-.width-750 {
-  width: 750px;
-}
-
-.width-800 {
-  width: 800px;
-}
-
-.width-850 {
-  width: 850px;
-}
-
-.height-25 {
-  height: 25px;
-}
-
-.height-50 {
-  height: 50px;
-}
-
-.height-75 {
-  height: 75px;
-}
-
-.height-100 {
-  height: 100px;
-}
-
-.height-150 {
   height: 150px;
+  margin-bottom: -50px;
+  position: relative;
+  top: -50px;
 }
 
-.height-200 {
-  height: 200px;
-}
-
-.height-250 {
-  height: 250px;
-}
-
-.height-300 {
-  height: 300px;
-}
-
-.height-350 {
-  height: 350px;
-}
-
-.height-400 {
+.cover-photo {
+  width: 100%;
   height: 400px;
+  background-image: url("../../img/img-demo.jpg");
 }
 
-.height-450 {
-  height: 450px;
+.icon {
+  width: 2em;
+  height: 2em;
+  fill: #6f42c1;
 }
 
-.height-500 {
-  height: 500px;
-}
-
-.height-550 {
-  height: 550px;
-}
-
-.height-600 {
-  height: 600px;
-}
-
-.height-650 {
-  height: 650px;
-}
-
-.height-700 {
-  height: 700px;
-}
-
-.height-750 {
-  height: 750px;
-}
-
-.height-800 {
-  height: 800px;
-}
-
-.height-850 {
-  height: 850px;
+textarea {
+  resize: none;
 }
 
 /*# sourceMappingURL=style.css.map */
