@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/dist/css/style.css" />
 	</head>
 	<body>
-		<main class="vh-100">
+		<main>
 			<!-- Navigation bar -->
 			<header class="sticky-top">
 				<div class="container-fluid border border-2 fs-3 text-center"><h1>Moment</h1></div>
@@ -17,7 +17,7 @@
 			<div class="card text-center m-5">
 				<div class="card-header">Login</div>
 				<div class="card-body">
-					<form class="d-flex flex-column">
+					<form id="login" class="d-flex flex-column">
 						<div class="d-flex justify-content-right">
 							<div class="mb-3 mx-auto">
 								<label for="email" class="form-label">Email address</label>
@@ -49,7 +49,6 @@
 				</div>
 			</div>
 			<!-- Sign up modal -->
-			<!-- <div class="modal-dialog modal-fullscreen-sm-down" id="signUpModal"></div> -->
 			<div
 				class="modal fade"
 				id="signUpModal"
@@ -65,8 +64,17 @@
 							<h5 class="modal-title" id="staticBackdropLabel">Create account</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<form class="d-flex flex-column">
+						<div id="account-created" class="d-none flex-column p-3">
+							<h3 class="text-primary">Welcome to our family &#128578</h3>
+							<h5 class="text-primary">Your new account was created.</h5>
+							<h5 class="text-primary">You can now login.</h5>
+						</div>
+						<form id="sign-up" class="d-flex flex-column">
 							<div class="modal-body">
+								<div id="err-display" class="d-none flex-column align-items-center error">
+									<p>Error, please try again</p>
+									<p id="register-err"></p>
+								</div>
 								<div class="d-flex">
 									<div class="mb-3 mx-auto">
 										<label for="name" class="form-label">Name</label>
@@ -75,14 +83,14 @@
 								</div>
 								<div class="d-flex justify-content-right">
 									<div class="mb-3 mx-auto">
-										<label for="email" class="form-label">Email address</label>
+										<label for="register-email" class="form-label">Email address</label>
 										<input
 											type="email"
 											class="form-control"
 											size="25"
-											id="email"
+											id="register-email"
 											required
-											placeholder="username@noroff.no"
+											placeholder="username@[stud.norof.no or noroff.no]"
 											pattern="\w+@noroff\.no|\w+@stud.noroff\.no"
 											title="Please provide only Noroff e-mail address. The email must not contain punctuation symbols apart from underscore (_)."
 										/>
@@ -90,8 +98,20 @@
 								</div>
 								<div class="d-flex">
 									<div class="mb-3 mx-auto">
-										<label for="password" class="form-label">Password</label>
-										<input type="password" class="form-control" id="password" required minlength="8" size="25" />
+										<label for="register-password" class="form-label">Password</label>
+										<input type="password" class="form-control" id="register-password" required minlength="8" size="25" />
+									</div>
+								</div>
+								<div class="d-flex">
+									<div class="mb-3 mx-auto">
+										<label for="avatar" class="form-label">Avatar</label>
+										<input type="text" class="form-control" id="avatar" size="25" />
+									</div>
+								</div>
+								<div class="d-flex">
+									<div class="mb-3 mx-auto">
+										<label for="banner" class="form-label">Banner</label>
+										<input type="text" class="form-control" id="banner" size="25" />
 									</div>
 								</div>
 							</div>
@@ -104,9 +124,7 @@
 				</div>
 			</div>
 		</main>
-		<footer>
-			<div class="container-fluid border border-2 fs-3 text-center">Logo</div>
-		</footer>
 		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="js/index.mjs" type="module"></script>
 	</body>
 </html>
