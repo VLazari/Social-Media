@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="/dist/css/style.css" />
 	</head>
 	<body>
-		<main>
+		<main class="main-container mx-auto">
 			<!-- Navigation bar -->
 			<header class="sticky-top">
 				<div class="container-fluid border border-2 fs-3 text-center"><h1>Moment</h1></div>
@@ -37,6 +37,11 @@
 							<div class="mb-3 mx-auto">
 								<label for="password" class="form-label">Password</label>
 								<input type="password" class="form-control" id="password" required minlength="8" size="25" />
+							</div>
+						</div>
+						<div id="login-error" class="d-none">
+							<div class="mb-3 mx-auto">
+								<p class="text-danger">Incorrect user name or password</p>
 							</div>
 						</div>
 						<hr />

@@ -8,6 +8,12 @@ export function registerUser() {
 	const registerPassword = document.getElementById("register-password");
 	const registerAvatar = document.getElementById("avatar");
 	const registerBanner = document.getElementById("banner");
+	if (registerBanner.value === "") {
+		registerBanner.value = "https://i.picsum.photos/id/1056/3988/2720.jpg?hmac=qX6hO_75zxeYI7C-1TOspJ0_bRDbYInBwYeoy_z_h08";
+	}
+	if (registerAvatar.value === "") {
+		registerAvatar.value = "https://xsgames.co/randomusers/assets/avatars/pixel/14.jpg";
+	}
 	const registerOptions = {
 		method: "POST",
 		body: JSON.stringify({
@@ -44,7 +50,7 @@ export function registerUser() {
  * Login the user.
  * All necessary parameters are defined inside the function.
  */
-export function loginUser() {
+export async function loginUser() {
 	const loginEmail = document.getElementById("email");
 	const loginPass = document.getElementById("password");
 	const loginOptions = {
@@ -57,11 +63,17 @@ export function loginUser() {
 			"Content-type": "application/json; charset=UTF-8",
 		},
 	};
-	try {
-		fetch("https://nf-api.onrender.com/api/v1/social/auth/login", loginOptions)
-			.then((response) => response.json())
-			.then((json) => console.log(json));
-	} catch (error) {
-		console.log(error);
+	const response = await fetch("https://nf-api.onrender.com/api/v1/social/auth/login", loginOptions);
+	if (response.status === 200) {
+		const json = await response.json();
+		localStorage.setItem("name", json.name);
+		localStorage.setItem("avatar", json.avatar);
+		localStorage.setItem("email", json.email);
+		localStorage.setItem("token", json.accessToken);
+		location.replace("../../pages/home.html");
+	} else {
+		const loginError = document.getElementById("login-error");
+		loginError.classList.remove("d-none");
+		loginError.classList.add("d-flex");
 	}
 }

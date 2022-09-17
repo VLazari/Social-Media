@@ -1,3 +1,9 @@
+// >>> Redirect the logged in user to home page <<<
+import isLogin from "./modules/login-check.mjs";
+if (isLogin()) {
+	location.replace("../pages/home.html");
+}
+
 // >>> Register a new user <<<
 import { registerUser } from "./modules/login.mjs";
 const signUp = document.getElementById("sign-up");
@@ -15,3 +21,5 @@ login.addEventListener("submit", (event) => {
 	loginUser();
 });
 // >>><<<
+
+// localStorage.clear();
