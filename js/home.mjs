@@ -62,20 +62,20 @@ posts.forEach((post) => {
 
 // >>> Add a new posts <<<
 
-import { postData, addPostBody } from "./modules/API-access.mjs";
+// import { postData, addPostBody } from "./modules/API-access.mjs";
 
-const addPostUrl = baseURL + "/posts";
-const addTitle = document.getElementById("add-post-title");
-const addBody = document.getElementById("add-post-body");
-const addTags = document.getElementById("add-post-tags");
-const addImage = document.getElementById("add-post-image");
-const addPostBtn = document.getElementById("add-post-btn");
+// const addPostUrl = baseURL + "/posts";
+// const addTitle = document.getElementById("add-post-title");
+// const addBody = document.getElementById("add-post-body");
+// const addTags = document.getElementById("add-post-tags");
+// const addImage = document.getElementById("add-post-image");
+// const addPostBtn = document.getElementById("add-post-btn");
 
-addPostBtn.addEventListener("click", () => {
-	const tags = [addTags.value.trim()];
-	const options = addPostBody(addTitle.value.trim(), addBody.value.trim(), tags, addImage.value.trim());
-	postData(addPostUrl, options);
-});
+// addPostBtn.addEventListener("click", () => {
+// 	const tags = [addTags.value.trim()];
+// 	const options = addPostBody(addTitle.value.trim(), addBody.value.trim(), tags, addImage.value.trim());
+// 	postData(addPostUrl, options);
+// });
 
 // >>><<<
 
