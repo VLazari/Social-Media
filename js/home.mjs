@@ -25,7 +25,7 @@ name.forEach((element) => (element.innerHTML = `${currentUser.name}`));
 
 import { getData } from "./modules/API-access.mjs";
 
-const url = baseURL + "/posts?_author=true&_comments=true&reactions=true&sort=created&sortOrder=desc&limit=5";
+const url = baseURL + "/posts?_author=true&_comments=true&reactions=true&sort=created&sortOrder=desc&limit=10";
 const mainPosts = document.querySelector(".posts");
 const posts = await getData(url);
 
