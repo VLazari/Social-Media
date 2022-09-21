@@ -25,7 +25,7 @@ name.forEach((element) => (element.innerHTML = `${currentUser.name}`));
 
 import { getData } from "./modules/API-access.mjs";
 
-const url = baseURL + "/posts?_author=true&_comments=true&reactions=true&sort=created&sortOrder=desc&limit=2&offset=0";
+const url = baseURL + "/posts?_author=true&_comments=true&reactions=true&sort=created&sortOrder=desc&limit=4&offset=0";
 const mainPosts = document.querySelector(".posts");
 const posts = await getData(url);
 
@@ -36,10 +36,10 @@ posts.forEach((post) => {
 		media = `<img src="${post.media}" alt="Post image" />`;
 	}
 	mainPosts.innerHTML += `<div id="${post.id}" class="card mx-0 my-3 bg-light border border-primary rounded border-opacity-25">
-                            <div class="p-3 d-flex align-items-center">
+                            <a href="/pages/profile.html?name=${post.author.name}" class="p-3 d-flex align-items-center">
                               <div class="mx-3 avatar-img" style="background-image: url('${post.author.avatar}');"></div>
                               <h6 class="m-0 user-name">${post.author.name}</h6>
-                            </div>
+                            </a>
                             ${media}
                             <div class="card-body">
                               <i class="fa-regular fa-heart fa-xl mx-2 text-danger"></i>

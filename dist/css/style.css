@@ -10782,7 +10782,8 @@ h1, .h1 {
   max-width: 1500px;
 }
 
-.avatar-img {
+.avatar-img,
+.cover-photo {
   width: 3em;
   height: 3em;
   background-position: center;
@@ -10793,12 +10794,7 @@ h1, .h1 {
 }
 
 .cover-photo {
-  width: 3em;
-  height: 3em;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50%;
+  border: none;
 }
 
 .prof-img {

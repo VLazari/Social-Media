@@ -83,73 +83,53 @@
 			<!-- Profile Info -->
 			<div class="card my-2 bg-light">
 				<div>
-					<div class="cover-photo"></div>
-					<div class="d-flex flex-column flex-md-row align-items-center mx-3">
-						<div class="img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
+					<div id="banner" class="cover-photo"></div>
+					<div class="d-flex mx-3">
+						<div class="avatar-img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
 						<div class="card-body mx-3">
-							<h3>User Name</h3>
-							<h5>Email</h5>
-							<p class="card-text"><small class="text-muted">Day of birth: 08 Mar 1974</small></p>
+							<h3 class="user-name"></h3>
+							<p class="card-text m-0"><small id="followers" class="text-muted">Followers: </small></p>
+							<p class="card-text m-0"><small id="following" class="text-muted">Following: </small></p>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<main class="main-container mx-auto">
-				<!-- Feeds -->
-				<div class="posts d-flex flex-column">
-					<!-- <div class="card mx-0 my-3 bg-light border border-primary rounded border-opacity-25">
-						<div class="p-3 d-flex align-items-center">
-							<div class="mx-3 avatar-img"></div>
-							<h6 class="m-0 user-name"></h6>
+			<!-- Posts -->
+			<div class="posts d-flex flex-column"></div>
+			<!-- Add post modal -->
+			<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true">
+				<div class="modal-dialog modal-fullscreen-sm-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="addPostLabel">
+								Share your
+								<h1 class="fs-4 mx-2">moments</h1>
+							</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						</div>
-						<img src="../img/img-demo.jpg" class="card-img-top" alt="..." />
-	
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						</div>
-						<p class="card-text m-2 mx-3"><small class="text-muted"> 22 hours ago </small></p>
-					</div> -->
-				</div>
-				<!-- ////// -->
-				<!-- Add post modal -->
-				<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true">
-					<div class="modal-dialog modal-fullscreen-sm-down">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="addPostLabel">
-									Share your
-									<h1 class="fs-4 mx-2">moments</h1>
-								</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<div class="modal-body">
+							<div class="d-flex flex-column">
+								<div class="my-3">
+									<input id="add-post-title" type="text" class="form-control" placeholder="Title" aria-label="title" required />
+								</div>
+								<div class="my-3">
+									<input id="add-post-body" type="text" class="form-control" placeholder="Body" aria-label="body" />
+								</div>
+								<div class="my-3">
+									<input id="add-post-tags" type="text" class="form-control" placeholder="Tags" aria-label="tag" />
+								</div>
+								<div class="my-3">
+									<input id="add-post-image" type="text" class="form-control" placeholder="Image URL" aria-label="image" />
+								</div>
 							</div>
-							<div class="modal-body">
-								<div class="d-flex flex-column">
-									<div class="my-3">
-										<input id="add-post-title" type="text" class="form-control" placeholder="Title" aria-label="title" required />
-									</div>
-									<div class="my-3">
-										<input id="add-post-body" type="text" class="form-control" placeholder="Body" aria-label="body" />
-									</div>
-									<div class="my-3">
-										<input id="add-post-tags" type="text" class="form-control" placeholder="Tags" aria-label="tag" />
-									</div>
-									<div class="my-3">
-										<input id="add-post-image" type="text" class="form-control" placeholder="Image URL" aria-label="image" />
-									</div>
-								</div>
-								<div class="modal-footer d-flex justify-content-evenly">
-									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-									<button id="add-post-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Post</button>
-								</div>
+							<div class="modal-footer d-flex justify-content-evenly">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<button id="add-post-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Post</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</main>
+			</div>
 		</main>
 		<footer>
 			<div class="container-fluid border border-2 fs-3 text-center"><h1>Moments</h1></div>

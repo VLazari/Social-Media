@@ -33,7 +33,8 @@ h1 {
   max-width: 1500px;
 }
 
-.avatar-img{
+.avatar-img, 
+.cover-photo {
   width: 3em;
   height: 3em;
   @include background;
@@ -42,10 +43,7 @@ h1 {
 }
 
 .cover-photo {
-  width: 3em;
-  height: 3em;
-  @include background;
-  border-radius: 50%;
+  border: none;
 }
 
 .prof-img{

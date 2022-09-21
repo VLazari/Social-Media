@@ -8,6 +8,22 @@ import { getData } from "/js/modules/API-access.mjs";
 const data = await getData(baseURL + `/profiles/${userName}?_posts=true`);
 console.log(data);
 
+// >>> Display the user avatar and name <<<
+
+const avatar = document.querySelectorAll(".avatar-img");
+const name = document.querySelectorAll(".user-name");
+const banner = document.getElementById("banner");
+const followers = document.getElementById("followers");
+const following = document.getElementById("following");
+
+avatar.forEach((element) => (element.style.backgroundImage = `url("${data.avatar}")`));
+name.forEach((element) => (element.innerHTML = data.name));
+banner.style.backgroundImage = `url("${data.banner}")`;
+followers.innerHTML += data._count.followers;
+following.innerHTML += data._count.following;
+
+// >>><<<
+
 const mainPosts = document.querySelector(".posts");
 
 data.posts.forEach((post) => {
