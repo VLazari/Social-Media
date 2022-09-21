@@ -25,11 +25,11 @@ name.forEach((element) => (element.innerHTML = `${currentUser.name}`));
 
 import { getData } from "./modules/API-access.mjs";
 
-const url = baseURL + "/posts?_author=true&_comments=true&reactions=true&sort=created&sortOrder=desc&limit=10";
+const url = baseURL + "/posts?_author=true&_comments=true&reactions=true&sort=created&sortOrder=desc&limit=2&offset=0";
 const mainPosts = document.querySelector(".posts");
 const posts = await getData(url);
 
-//console.log(posts);
+console.log(posts);
 posts.forEach((post) => {
 	let media = "";
 	if (post.media.trim() != "") {
@@ -60,7 +60,7 @@ posts.forEach((post) => {
 
 // >>><<<
 
-// >>> Display the posts <<<
+// >>> Add a new posts <<<
 
 import { postData, addPostBody } from "./modules/API-access.mjs";
 

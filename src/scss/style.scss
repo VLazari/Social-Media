@@ -10,6 +10,10 @@ body{
   margin: 0;
 }
 
+main{
+  min-height: calc(100vh - 10em);
+}
+
 .main-container{
   max-width: 1000px;
 }
