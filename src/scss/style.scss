@@ -4,18 +4,24 @@
 // Bootstrap styles
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-// Customized styles
-// $indigo: #6610f2;
-// $purple: #6f42c1;
-
 body{
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+main{
+  min-height: calc(100vh - 10em);
+}
+
 .main-container{
   max-width: 1000px;
+}
+
+@mixin background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 
 h1 {
@@ -27,14 +33,18 @@ h1 {
   max-width: 1500px;
 }
 
-.img,
+.avatar-img{
+  width: 3em;
+  height: 3em;
+  @include background;
+  border: 1px solid $indigo;
+  border-radius: 50%;
+}
+
 .cover-photo {
   width: 3em;
   height: 3em;
-  background-image: url("https://pixabay.com/get/g72570836a995ebcd1145fa1f2942f0fc67554ac31b5d6cb894203709a58649f8c086109008a12bed5d03ef16470fa59d46fb2a30496726e47627b1d62bd5f569445ffdf685ceb526fecc0ecfba6814f4_640.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size:cover;
+  @include background;
   border-radius: 50%;
 }
 
@@ -49,7 +59,6 @@ h1 {
 .cover-photo{
   width: 100%;
   height: 400px;
-  background-image: url("https://pixabay.com/get/ge6913c7053a464b3adf622945f56ee7bad2b76745ac0797ca18fc1d81b74e69dee3e00b8082aa51ec57f6c86c81b7445d8febc16041c3de755a0de56f3cd9ca45a9662e72cdde568dc8d31406c3210a2_1280.jpg");
   border-radius: 0;
 }
 
@@ -65,4 +74,8 @@ textarea{
 
 .error{
   color: $danger;
+}
+
+.navbar-nav{
+  width: 100%;
 }
