@@ -9,18 +9,6 @@ if (isLogin() === false) {
 
 // >>><<<
 
-// >>> Display the user avatar and name <<<
-
-import { currentUser } from "./modules/user-data.mjs";
-
-const avatar = document.querySelectorAll(".avatar-img");
-const name = document.querySelectorAll(".user-name");
-
-avatar.forEach((element) => (element.style.backgroundImage = `url("${currentUser.avatar}")`));
-name.forEach((element) => (element.innerHTML = `${currentUser.name}`));
-
-// >>><<<
-
 // >>> Display the posts  <<<
 
 import { getData } from "./modules/API-access.mjs";
@@ -59,31 +47,3 @@ posts.forEach((post) => {
 });
 
 // >>><<<
-
-// >>> Add a new posts <<<
-
-// import { postData, addPostBody } from "./modules/API-access.mjs";
-
-// const addPostUrl = baseURL + "/posts";
-// const addTitle = document.getElementById("add-post-title");
-// const addBody = document.getElementById("add-post-body");
-// const addTags = document.getElementById("add-post-tags");
-// const addImage = document.getElementById("add-post-image");
-// const addPostBtn = document.getElementById("add-post-btn");
-
-// addPostBtn.addEventListener("click", () => {
-// 	const tags = [addTags.value.trim()];
-// 	const options = addPostBody(addTitle.value.trim(), addBody.value.trim(), tags, addImage.value.trim());
-// 	postData(addPostUrl, options);
-// });
-
-// >>><<<
-
-// import { deletePost } from "./modules/API-access.mjs";
-// const del = baseURL + "/posts/140";
-// const test = document.querySelectorAll(".fa-heart");
-// test.forEach((action) => {
-// 	action.addEventListener("click", (e) => {
-// 		deletePost(del);
-// 	});
-// });

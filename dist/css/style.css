@@ -10783,7 +10783,8 @@ h1, .h1 {
 }
 
 .avatar-img,
-.cover-photo {
+.cover-photo,
+.main-avatar {
   width: 3em;
   height: 3em;
   background-position: center;
@@ -10827,6 +10828,10 @@ textarea {
 
 .navbar-nav {
   width: 100%;
+}
+
+i {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

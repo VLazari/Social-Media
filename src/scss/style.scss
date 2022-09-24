@@ -34,7 +34,8 @@ h1 {
 }
 
 .avatar-img, 
-.cover-photo {
+.cover-photo,
+.main-avatar {
   width: 3em;
   height: 3em;
   @include background;
@@ -76,4 +77,8 @@ textarea{
 
 .navbar-nav{
   width: 100%;
+}
+
+i {
+  cursor: pointer;
 }
