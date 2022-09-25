@@ -10834,4 +10834,18 @@ i {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 768px) {
+  footer {
+    margin-bottom: 73.8px;
+  }
+  .mobile-nav {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid lightgray;
+    background-color: #f8f9fa;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
