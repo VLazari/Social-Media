@@ -77,24 +77,28 @@
 			<div class="card my-2 bg-light">
 				<div>
 					<div id="banner" class="cover-photo"></div>
-					<div class="d-flex mx-3">
+					<div class="d-flex flex-wrap align-items-center justify-content-right mx-3">
 						<div class="avatar-img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
-						<div class="card-body mx-3">
-							<h3 class="user-name"></h3>
-							<p class="card-text m-0"><small id="followers" class="text-muted">Followers: </small></p>
-							<p class="card-text m-0"><small id="following" class="text-muted">Following: </small></p>
+						<h3 class="user-name my-0 mx-2"></h3>
+						<div id="follow-user" class="btn btn-primary px-4 mx-auto d-none">Follow</div>
+						<div id="edit-profile" class="btn btn-primary px-4 mx-auto d-none" data-bs-toggle="modal" data-bs-target="#editProfModal">
+							Edit Profile
+						</div>
+						<div class="d-flex flex-sm-column mx-3">
+							<p class="card-text m-3"><small id="followers" class="text-muted">Followers: </small></p>
+							<p class="card-text m-3"><small id="following" class="text-muted">Following: </small></p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- Posts -->
 			<div class="posts d-flex flex-column"></div>
-			<!-- Add post modal -->
+			<!-- Add post -  modal -->
 			<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true">
 				<div class="modal-dialog modal-fullscreen-sm-down">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="addPostLabel">
+							<h5 class="modal-title">
 								Share your
 								<h1 class="fs-4 mx-2">moments</h1>
 							</h5>
@@ -119,6 +123,39 @@
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 								<button id="add-post-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Post</button>
 								<button id="edit-post-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit Post</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Edit profile -  modal -->
+			<div class="modal fade" id="editProfModal" tabindex="-1" aria-labelledby="editProfLabel" aria-hidden="true">
+				<div class="modal-dialog modal-fullscreen-sm-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="fs-4 mx-2">Moments</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<!--  -->
+							<div id="new-banner" class="cover-photo"></div>
+							<div class="d-flex flex-wrap align-items-center justify-content-right mx-3">
+								<div id="new-avatar" class="avatar-img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
+							</div>
+							<!--  -->
+							<div class="d-flex flex-column">
+								<div class="my-3">
+									<label for="edit-banner">Banner URL</label>
+									<input id="edit-banner" type="text" class="form-control" placeholder="Banner URL" aria-label="banner" />
+								</div>
+								<div class="my-3">
+									<label for="edit-avatar">Avatar URL</label>
+									<input id="edit-avatar" type="text" class="form-control" placeholder="Avatar URL" aria-label="avatar" />
+								</div>
+							</div>
+							<div class="modal-footer d-flex justify-content-evenly">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<button id="change-prof-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit Profile</button>
 							</div>
 						</div>
 					</div>

@@ -10834,6 +10834,10 @@ i {
   cursor: pointer;
 }
 
+.comm-date {
+  font-size: 0.7em;
+}
+
 @media only screen and (max-width: 768px) {
   footer {
     margin-bottom: 73.8px;

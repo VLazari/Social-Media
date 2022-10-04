@@ -1,4 +1,4 @@
-import { currentUser } from "./user-data.mjs";
+import { currentUser } from "/js/modules/user-data.mjs";
 
 /**
  * Make an API GET request and returns the response promise.
@@ -52,6 +52,17 @@ export function addPostBody(method, title, body, tag, media) {
 		},
 	};
 	return options;
+}
+
+export async function putRequest(url) {
+	const options = {
+		method: "PUT",
+		headers: {
+			Authorization: currentUser.token,
+		},
+	};
+
+	const response = await fetch(url, options);
 }
 
 /**
