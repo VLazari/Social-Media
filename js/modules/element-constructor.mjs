@@ -1,6 +1,5 @@
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
 import * as api from "/js/modules/API-access.mjs";
-import { currentUser } from "/js/modules/user-data.mjs";
 
 function createElement(elementName, classNames) {
 	const element = document.createElement(`${elementName}`);
@@ -79,7 +78,6 @@ export async function displayComments(id) {
 	const postData = await api.getData(postUrl);
 	const modalHeader = document.getElementById("comment-header");
 	const modalBody = document.getElementById("comment-body");
-	console.log(postData);
 
 	modalHeader.innerHTML = "";
 	modalBody.innerHTML = "";
@@ -121,18 +119,78 @@ export async function displayComments(id) {
 	});
 }
 
-export function sendComment(id) {
-	const message = document.getElementById("comment-input");
-	const url = baseURL + `/posts/${id}/comment`;
-	const options = {
-		method: "POST",
-		body: JSON.stringify({
-			body: message.value,
-		}),
-		headers: {
-			"Content-type": "application/json; charset=UTF-8",
-			Authorization: currentUser.token,
-		},
-	};
-	api.postData(url, options);
+export function profilePosts(data, displayClass) {
+	const mainPosts = document.querySelector(".posts");
+	data.posts.forEach((post) => {
+		const card = createElement("div", "card mx-0 my-3 bg-light border border-primary rounded border-opacity-25");
+		card.id = post.id;
+		mainPosts.appendChild(card);
+
+		const cardHead = createElement("div", "p-3 d-flex align-items-center justify-content-between");
+		card.appendChild(cardHead);
+
+		const headInfo = createElement("div", "d-flex align-items-center");
+		cardHead.appendChild(headInfo);
+
+		const avatar = createElement("div", "mx-3 avatar-img");
+		avatar.style.backgroundImage = `url("${data.avatar}")`;
+		headInfo.appendChild(avatar);
+
+		const name = createElement("h6", "m-0 user-name");
+		name.innerText = data.name;
+		headInfo.appendChild(name);
+
+		const headAction = document.createElement("div");
+		cardHead.appendChild(headAction);
+
+		const editPost = createElement("i", `fa-solid fa-file-pen fa-lg mx-3 text-primary ${displayClass}`);
+		editPost.dataset.bsToggle = "modal";
+		editPost.dataset.bsTarget = "#addPostModal";
+		editPost.dataset.postId = post.id;
+		editPost.dataset.title = post.title;
+		editPost.dataset.body = post.body;
+		editPost.dataset.tag = post.tag;
+		editPost.dataset.media = post.media;
+		headAction.appendChild(editPost);
+
+		const delPost = createElement("i", `fa-solid fa-trash fa-lg mx-3 text-danger ${displayClass}`);
+		delPost.dataset.postId = post.id;
+		headAction.appendChild(delPost);
+
+		const img = createElement("img", "");
+		img.src = post.media;
+		img.setAttribute("alt", "Post image");
+		card.appendChild(img);
+
+		const bottomAction = createElement("div", "card-body");
+		card.appendChild(bottomAction);
+
+		const like = createElement("i", "fa-regular fa-heart fa-xl mx-2 text-danger");
+		bottomAction.appendChild(like);
+
+		const comment = createElement("i", "fa-regular fa-comment fa-xl mx-2 text-primary");
+		comment.dataset.postId = post.id;
+		comment.dataset.bsToggle = "modal";
+		comment.dataset.bsTarget = "#commentModal";
+		bottomAction.appendChild(comment);
+
+		const title = createElement("div", "card-body py-0 fw-semibold");
+		title.innerText = post.title;
+		card.appendChild(title);
+
+		const body = createElement("div", "card-body py-0");
+		body.innerText = post.body;
+		card.appendChild(body);
+
+		const wrapDate = createElement("div", "card-text m-2 mx-3");
+		card.appendChild(wrapDate);
+
+		const dateTime = createElement("small", "text-muted");
+		dateTime.innerText = post.updated.substr(11, 5);
+		wrapDate.appendChild(dateTime);
+
+		const dateDay = createElement("small", "text-muted mx-2");
+		dateDay.innerText = post.updated.substr(0, 10);
+		wrapDate.appendChild(dateDay);
+	});
 }

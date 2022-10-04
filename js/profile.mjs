@@ -1,4 +1,6 @@
 import { currentUser } from "/js/modules/user-data.mjs";
+import * as create from "/js/modules/element-constructor.mjs";
+
 const queryUrl = location.search;
 const urlParams = new URLSearchParams(queryUrl);
 const userName = urlParams.get("name");
@@ -10,6 +12,7 @@ const data = await getData(baseURL + `/profiles/${userName}?_posts=true&_followi
 console.log(data);
 
 // >>> Check if the profile page is for the current user or selected user <<<
+
 let displayClass = "d-none";
 const followUser = document.getElementById("follow-user");
 const editProf = document.getElementById("edit-profile");
@@ -40,46 +43,7 @@ following.innerHTML += data._count.following;
 
 // >>> Display the user's posts <<<
 
-const mainPosts = document.querySelector(".posts");
-
-data.posts.forEach((post) => {
-	let media = "";
-	if (post.media.trim() != "") {
-		media = `<img src="${post.media}" alt="Post image" />`;
-	}
-	mainPosts.innerHTML += `<div id="${post.id}" class="card mx-0 my-3 bg-light border border-primary rounded border-opacity-25">
-                            <div class="p-3 d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                              <div class="mx-3 avatar-img" style="background-image: url('${data.avatar}');"></div>
-                              <h6 class="m-0 user-name">${data.name}</h6>
-                            </div>
-                              <div>
-                                <button type="button" class="border-0 text-bg-light px-3 py-4 edit-btn" data-bs-toggle="modal" data-bs-target="#addPostModal" 
-                                data-post-id="${post.id}" data-title="${post.title}" data-body="${post.body}" data-tag="${post.tag}" data-media="${
-		post.media
-	}">
-                                  <i class="fa-solid fa-file-pen fa-lg mx-2 text-primary ${displayClass}"></i>
-                                </button>
-                                <i class="fa-solid fa-trash fa-lg mx-2 text-danger ${displayClass}" data-post-id="${post.id}"></i>
-                              </div>
-                            </div>
-                            ${media}
-                            <div class="card-body">
-                              <i class="fa-regular fa-heart fa-xl mx-2 text-danger"></i>
-                              <i class="fa-regular fa-comment fa-xl mx-2 text-primary"></i>
-                            </div>
-                            <div class="card-body py-0">
-                              <p class="card-text fw-semibold my-0 py-0">${post.title}</p>
-                            </div>
-                            <div class="card-body py-0">
-                              <p class="card-text">${post.body}</p>
-                            </div>
-                            <p class="card-text m-2 mx-3">
-                              <small class="text-muted"> ${post.updated.substr(11, 5)} </small>
-                              <small class="text-muted mx-2"> ${post.updated.substr(0, 10)} </small>
-                            </p>
-                          </div>`;
-});
+create.profilePosts(data, displayClass);
 
 // >>><<<
 
@@ -98,7 +62,7 @@ delPost.forEach((button) => {
 // >>> Edit post <<<
 import { postData, addPostBody } from "/js/modules/API-access.mjs";
 
-const editBtn = document.querySelectorAll(".edit-btn");
+const editBtn = document.querySelectorAll(".fa-file-pen");
 const editTitle = document.getElementById("add-post-title");
 const editBody = document.getElementById("add-post-body");
 const editTags = [document.getElementById("add-post-tags")];
@@ -169,6 +133,7 @@ editUserProf.addEventListener("click", async () => {
 // >>><<<
 
 // >>> Follow / Unfollow user <<<
+
 import { putRequest } from "/js/modules/API-access.mjs";
 
 function checkStatus() {
@@ -194,4 +159,37 @@ followUser.addEventListener("click", () => {
 		followUser.innerHTML = "Follow";
 	}
 });
+// >>><<<
+
+// >>> Comment  <<<
+const comments = document.querySelectorAll(".fa-comment");
+const postComment = document.getElementById("comment-btn");
+comments.forEach((comm) => {
+	comm.addEventListener("click", () => {
+		postComment.dataset.id = comm.dataset.postId;
+		create.displayComments(comm.dataset.postId);
+	});
+});
+
+postComment.addEventListener("click", async () => {
+	await sendComment(postComment.dataset.id);
+	create.displayComments(postComment.dataset.id);
+});
+
+async function sendComment(id) {
+	const message = document.getElementById("comment-input");
+	const url = baseURL + `/posts/${id}/comment`;
+	const options = {
+		method: "POST",
+		body: JSON.stringify({
+			body: message.value,
+		}),
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+			Authorization: currentUser.token,
+		},
+	};
+	await postData(url, options, 1);
+	message.value = "";
+}
 // >>><<<

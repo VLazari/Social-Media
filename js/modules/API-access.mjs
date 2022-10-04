@@ -21,9 +21,9 @@ export async function getData(url) {
  * @param {string} url API POST request URL
  * @param {object} options POST request body and method
  */
-export async function postData(url, options) {
+export async function postData(url, options, reload) {
 	const response = await fetch(url, options);
-	if (response.status == 200) {
+	if (response.status == 200 && reload == null) {
 		location.reload();
 	}
 }
