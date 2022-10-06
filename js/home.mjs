@@ -11,15 +11,23 @@ if (isLogin() === false) {
 }
 // >>><<<
 
-// >>> Display the posts  <<<
+// >>> Display posts  <<<
 
 import { getData } from "/js/modules/API-access.mjs";
 
-const url = baseURL + "/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc&limit=20&offset=0";
-export const posts = await getData(url);
-
+const url = baseURL + "/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc&limit=10&offset=0";
+const posts = await getData(url);
 create.displayPost(posts);
-console.log(posts);
+
+window.addEventListener("scroll", async () => {
+	let pageDisplayOffset = 0;
+	if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+		pageDisplayOffset += 10;
+		const url = baseURL + `/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc&limit=10&offset=${pageDisplayOffset}`;
+		const posts = await getData(url);
+		create.displayPost(posts);
+	}
+});
 // >>><<<
 
 // >>> React to post  <<<
@@ -40,7 +48,6 @@ reactions.forEach((react) => {
 
 // >>> Comment on post <<<
 
-import { postData } from "/js/modules/API-access.mjs";
 import { sendComment } from "/js/modules/API-access.mjs";
 const comments = document.querySelectorAll(".fa-comment");
 const postComment = document.getElementById("comment-btn");

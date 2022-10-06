@@ -7,7 +7,6 @@ const urlParams = new URLSearchParams(queryUrl);
 const userName = urlParams.get("name");
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
 const data = await getData(baseURL + `/profiles/${userName}?_posts=true&_following=true&_followers=true`);
-console.log(data);
 
 // >>> Check if the profile page is for the current user or selected user <<<
 
@@ -29,10 +28,18 @@ const name = document.querySelectorAll(".user-name");
 const banner = document.getElementById("banner");
 const followers = document.getElementById("followers");
 const following = document.getElementById("following");
-
-avatar.style.backgroundImage = `url("${data.avatar}")`;
+let avatarImgUrl = "https://xsgames.co/randomusers/avatar.php?g=female";
+if (data.avatar.trim() != "") {
+	avatarImgUrl = data.avatar;
+}
+avatar.style.backgroundImage = `url("${avatarImgUrl}")`;
 name.forEach((element) => (element.innerHTML = data.name));
-banner.style.backgroundImage = `url("${data.banner}")`;
+let i = Math.floor(Math.random() * 100);
+let imgBanner = `https://picsum.photos/800/600?random=${i}`;
+if (data.banner.trim() != "") {
+	imgBanner = data.banner;
+}
+banner.style.backgroundImage = `url("${imgBanner}")`;
 followers.innerHTML += data._count.followers;
 following.innerHTML += data._count.following;
 // >>><<<
@@ -86,19 +93,17 @@ editBtn.forEach((button) => {
 // >>><<<
 
 // >>> Edit profile <<<
+
 const editUserProf = document.getElementById("change-prof-btn");
 const editBanner = document.getElementById("edit-banner");
 const editAvatar = document.getElementById("edit-avatar");
-
 let newBanner = document.getElementById("new-banner");
 let newAvatar = document.getElementById("new-avatar");
 const url = baseURL + `/profiles/${currentUser.name}/media`;
 editBanner.value = data.banner;
 editAvatar.value = currentUser.avatar;
-
 newBanner.style.backgroundImage = `url("${editBanner.value}")`;
 newAvatar.style.backgroundImage = `url("${editAvatar.value}")`;
-
 editBanner.onchange = profPreview;
 function profPreview() {
 	newBanner.style.backgroundImage = `url("${editBanner.value}")`;

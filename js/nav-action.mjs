@@ -4,8 +4,8 @@ const { name, avatar } = currentUser;
 // >>> Display user main avatar <<<
 
 const mainAvatar = document.querySelector(".main-avatar");
-
 mainAvatar.style.backgroundImage = `url("${avatar}")`;
+// >>><<<
 
 // >>> Navigate to user profile page <<<
 
@@ -16,7 +16,6 @@ profile.href = `/pages/profile.html?name=${name}`;
 // >>> Logout current user <<<
 
 const logout = document.getElementById("logout");
-
 logout.addEventListener("click", () => {
 	localStorage.clear();
 	location.replace("/index.html");
@@ -28,7 +27,6 @@ logout.addEventListener("click", () => {
 import { postData, addPostBody } from "/js/modules/API-access.mjs";
 
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
-
 const addPostUrl = baseURL + "/posts";
 const addTitle = document.getElementById("add-post-title");
 const addBody = document.getElementById("add-post-body");
@@ -59,19 +57,15 @@ import { getData } from "/js/modules/API-access.mjs";
 import { displaySearchResults } from "/js/modules/element-constructor.mjs";
 const displayResults = document.getElementById("search-results");
 const searchUser = document.getElementById("search");
-
 const data = await getData("https://nf-api.onrender.com/api/v1/social/profiles");
-
 const users = data.reverse().map(({ avatar, name }) => {
 	avatar = avatar.trim() == "" ? "https://xsgames.co/randomusers/avatar.php?g=female" : avatar;
 	displaySearchResults(displayResults, avatar, name);
 	return { name, avatar };
 });
-
 function convertStr(string) {
 	return string.trim().toLowerCase();
 }
-
 searchUser.addEventListener("input", () => {
 	displayResults.innerHTML = "";
 	const searchResult = users.filter(({ name }) => convertStr(name).includes(convertStr(searchUser.value)));
@@ -81,21 +75,4 @@ searchUser.addEventListener("input", () => {
 		displayResults.innerText = `No results found for "${searchUser.value}"`;
 	}
 });
-
 // >>><<<
-
-// const searchModal = document.getElementById(searchUserModal);
-// searchModal.innerHTML = `<div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
-// 												<div class="modal-content">
-// 													<div class="modal-header">
-// 														<input id="search" type="text" class="form-control me-3" placeholder="Search..." />
-// 														<button type="button" class="btn-close mx-1" data-bs-dismiss="modal" aria-label="Close"></button>
-// 													</div>
-// 													<div class="modal-body">
-// 														<div id="search-results" class="ms-2"></div>
-// 													</div>
-// 													<div class="modal-footer d-flex flex-nowrap justify-content-evenly mobile-nav">
-// 														<h1>Moments</h1>
-// 													</div>
-// 												</div>
-// 											</div>`;

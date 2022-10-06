@@ -148,7 +148,11 @@ export function profilePosts(data, displayClass) {
 		cardHead.appendChild(headInfo);
 
 		const avatar = createElement("div", "mx-3 avatar-img");
-		avatar.style.backgroundImage = `url("${data.avatar}")`;
+		let avatarImgUrl = "https://xsgames.co/randomusers/avatar.php?g=female";
+		if (data.avatar.trim() != "") {
+			avatarImgUrl = data.avatar;
+		}
+		avatar.style.backgroundImage = `url("${avatarImgUrl}")`;
 		headInfo.appendChild(avatar);
 
 		const name = createElement("h6", "m-0 user-name");
@@ -173,7 +177,12 @@ export function profilePosts(data, displayClass) {
 		headAction.appendChild(delPost);
 
 		const img = createElement("img", "");
-		img.src = post.media;
+		let i = Math.floor(Math.random() * 100);
+		let mediaImg = `https://picsum.photos/800/600?random=${i}`;
+		if (post.media.trim() != "") {
+			mediaImg = post.media;
+		}
+		img.src = mediaImg;
 		img.setAttribute("alt", "Post image");
 		card.appendChild(img);
 
