@@ -1,13 +1,11 @@
 import { currentUser } from "/js/modules/user-data.mjs";
 import * as create from "/js/modules/element-constructor.mjs";
+import { getData } from "/js/modules/API-access.mjs";
 
 const queryUrl = location.search;
 const urlParams = new URLSearchParams(queryUrl);
 const userName = urlParams.get("name");
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
-
-import { getData } from "/js/modules/API-access.mjs";
-
 const data = await getData(baseURL + `/profiles/${userName}?_posts=true&_following=true&_followers=true`);
 console.log(data);
 
@@ -22,7 +20,6 @@ if (userName == currentUser.name) {
 } else {
 	followUser.classList.remove("d-none");
 }
-
 // >>><<<
 
 // >>> Display the user avatar and name <<<
@@ -38,13 +35,11 @@ name.forEach((element) => (element.innerHTML = data.name));
 banner.style.backgroundImage = `url("${data.banner}")`;
 followers.innerHTML += data._count.followers;
 following.innerHTML += data._count.following;
-
 // >>><<<
 
 // >>> Display the user's posts <<<
 
 create.profilePosts(data, displayClass);
-
 // >>><<<
 
 // >>> Delete posts <<<
@@ -56,7 +51,6 @@ delPost.forEach((button) => {
 		deletePost(baseURL + `/posts/${button.dataset.postId}`);
 	});
 });
-
 // >>><<<
 
 // >>> Edit post <<<
@@ -67,8 +61,8 @@ const editTitle = document.getElementById("add-post-title");
 const editBody = document.getElementById("add-post-body");
 const editTags = [document.getElementById("add-post-tags")];
 const editImage = document.getElementById("add-post-image");
-const editPostBtn = document.getElementById("edit-post-btn");
-const addPostBtn = document.getElementById("add-post-btn");
+const editPostForm = document.getElementById("add-post-form");
+const postBtn = document.getElementById("post-btn");
 let userId = "";
 
 editBtn.forEach((button) => {
@@ -78,18 +72,17 @@ editBtn.forEach((button) => {
 		editBody.value = button.dataset.body;
 		editTags.value = button.dataset.tag;
 		editImage.value = button.dataset.media;
-		addPostBtn.className = "btn btn-primary d-none";
-		editPostBtn.className = "btn btn-primary d-inline-block";
-	});
+		postBtn.innerText = "Edit Post";
 
-	editPostBtn.addEventListener("click", () => {
-		const addPostUrl = baseURL + `/posts/${userId}`;
-		const tags = [editTags.value];
-		const options = addPostBody("PUT", editTitle.value.trim(), editBody.value.trim(), tags, editImage.value.trim());
-		postData(addPostUrl, options);
+		editPostForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const addPostUrl = baseURL + `/posts/${userId}`;
+			const tags = [editTags.value];
+			const options = addPostBody("PUT", editTitle.value.trim(), editBody.value.trim(), tags, editImage.value.trim());
+			postData(addPostUrl, options);
+		});
 	});
 });
-
 // >>><<<
 
 // >>> Edit profile <<<
@@ -129,7 +122,6 @@ editUserProf.addEventListener("click", async () => {
 		location.reload();
 	}
 });
-
 // >>><<<
 
 // >>> Follow / Unfollow user <<<
@@ -162,6 +154,8 @@ followUser.addEventListener("click", () => {
 // >>><<<
 
 // >>> Comment  <<<
+
+import { sendComment } from "/js/modules/API-access.mjs";
 const comments = document.querySelectorAll(".fa-comment");
 const postComment = document.getElementById("comment-btn");
 comments.forEach((comm) => {
@@ -175,21 +169,4 @@ postComment.addEventListener("click", async () => {
 	await sendComment(postComment.dataset.id);
 	create.displayComments(postComment.dataset.id);
 });
-
-async function sendComment(id) {
-	const message = document.getElementById("comment-input");
-	const url = baseURL + `/posts/${id}/comment`;
-	const options = {
-		method: "POST",
-		body: JSON.stringify({
-			body: message.value,
-		}),
-		headers: {
-			"Content-type": "application/json; charset=UTF-8",
-			Authorization: currentUser.token,
-		},
-	};
-	await postData(url, options, 1);
-	message.value = "";
-}
 // >>><<<

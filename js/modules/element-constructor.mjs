@@ -1,6 +1,12 @@
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
 import * as api from "/js/modules/API-access.mjs";
 
+/**
+ * Create an element with it's class
+ * @param {string} elementName Type of element to create.
+ * @param {string} classNames Elements class names,
+ * @returns element with set class names.
+ */
 function createElement(elementName, classNames) {
 	const element = document.createElement(`${elementName}`);
 	element.className = `${classNames}`;
@@ -12,13 +18,18 @@ export function displayPost(posts) {
 	posts.forEach((post) => {
 		const wrapContainer = createElement("div", "card mx-0 my-3 bg-light border border-primary rounded border-opacity-25");
 		wrapContainer.id = post.id;
+		mainPosts.appendChild(wrapContainer);
 
 		const postAuthor = createElement("a", "p-3 d-flex align-items-center");
 		postAuthor.href = `/pages/profile.html?name=${post.author.name}`;
 		wrapContainer.appendChild(postAuthor);
 
 		const avatarImg = createElement("div", "mx-3 avatar-img");
-		avatarImg.style.backgroundImage = `url("${post.author.avatar}")`;
+		let avatarImgUrl = "https://xsgames.co/randomusers/avatar.php?g=female";
+		if (post.author.avatar.trim() != "") {
+			avatarImgUrl = post.author.avatar;
+		}
+		avatarImg.style.backgroundImage = `url("${avatarImgUrl}")`;
 		postAuthor.appendChild(avatarImg);
 
 		const authorName = createElement("h6", "m-0 user-name");
@@ -26,7 +37,12 @@ export function displayPost(posts) {
 		postAuthor.appendChild(authorName);
 
 		const wrapImg = createElement("img", "");
-		wrapImg.src = post.media;
+		let i = Math.floor(Math.random() * 100);
+		let mediaImg = `https://picsum.photos/800/600?random=${i}`;
+		if (post.media.trim() != "") {
+			mediaImg = post.media;
+		}
+		wrapImg.src = mediaImg;
 		wrapImg.setAttribute("alt", "Post image");
 		wrapContainer.appendChild(wrapImg);
 
@@ -69,7 +85,6 @@ export function displayPost(posts) {
 		const dateDay = createElement("small", "text-muted mx-2");
 		dateDay.innerText = post.updated.substr(0, 10);
 		wrapDate.appendChild(dateDay);
-		mainPosts.appendChild(wrapContainer);
 	});
 }
 
@@ -193,4 +208,18 @@ export function profilePosts(data, displayClass) {
 		dateDay.innerText = post.updated.substr(0, 10);
 		wrapDate.appendChild(dateDay);
 	});
+}
+
+export function displaySearchResults(results, userAvatar, userName) {
+	const container = createElement("a", "d-flex align-items-center mb-3");
+	container.href = `/pages/profile.html?name=${userName}`;
+	results.appendChild(container);
+
+	const avatar = createElement("div", "mx-3 avatar-img");
+	avatar.style.backgroundImage = `url("${userAvatar}")`;
+	container.appendChild(avatar);
+
+	const name = createElement("h6", "m-0 user-name");
+	name.innerText = userName;
+	container.appendChild(name);
 }

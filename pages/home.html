@@ -49,7 +49,7 @@
 							</div>
 						</li>
 						<li class="nav-item mx-md-3">
-							<div id="search-user" class="px-3 py-4" data-bs-toggle="modal" data-bs-target="#addSearchModal">
+							<div id="search-user" class="px-3 py-4" data-bs-toggle="modal" data-bs-target="#searchUserModal">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
 									<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
 									<path
@@ -74,80 +74,18 @@
 		</header>
 		<main class="main-container mx-auto">
 			<!-- Posts -->
-			<div class="posts d-flex flex-column">
-				<!-- <div class="card mx-0 my-3 bg-light border border-primary rounded border-opacity-25">
-					<div class="p-3 d-flex align-items-center">
-						<div class="mx-3 avatar-img"></div>
-						<h6 class="m-0 user-name"></h6>
-					</div>
-					<div class="card-body">
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					</div>
-					<img src="../img/img-demo.jpg" class="card-img-top" alt="..." />
-
-					<div class="card-body">
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					</div>
-					<p class="card-text m-2 mx-3"><small class="text-muted"> 22 hours ago </small></p>
-				</div> -->
-			</div>
+			<div class="posts d-flex flex-column"></div>
 			<!-- Add post -  modal -->
-			<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true">
-				<div class="modal-dialog modal-fullscreen-sm-down">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">
-								Share your
-								<h1 class="fs-4 mx-2">moments</h1>
-							</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<div class="d-flex flex-column">
-								<div class="my-3">
-									<input id="add-post-title" type="text" class="form-control" placeholder="Title" aria-label="title" required />
-								</div>
-								<div class="my-3">
-									<input id="add-post-body" type="text" class="form-control" placeholder="Body" aria-label="body" />
-								</div>
-								<div class="my-3">
-									<input id="add-post-tags" type="text" class="form-control" placeholder="Tags" aria-label="tag" />
-								</div>
-								<div class="my-3">
-									<input id="add-post-image" type="text" class="form-control" placeholder="Image URL" aria-label="image" />
-								</div>
-							</div>
-							<div class="modal-footer d-flex justify-content-evenly">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-								<button id="add-post-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Post</button>
-								<button id="edit-post-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit Post</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true"></div>
 			<!-- Comment on post - modal -->
-			<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div id="comment-header" class="d-flex flex-column align-items-start justify-content-start"></div>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body mb-5 mb-sm-0">
-							<div id="comment-body" class="mb-5 pb-5"></div>
-						</div>
-						<div class="modal-footer d-flex flex-nowrap justify-content-evenly mobile-nav">
-							<input id="comment-input" type="text" class="form-control" placeholder="Add comment" aria-label="comment" />
-							<i id="comment-btn" class="fa-solid fa-paper-plane fa-xl mx-2 text-primary"></i>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentLabel" aria-hidden="true"></div>
+			<!-- Search user - modal -->
+			<div class="modal fade" id="searchUserModal" tabindex="-1" aria-labelledby="commentLabel" aria-hidden="true"></div>
 		</main>
 		<footer>
 			<div class="container-fluid border border-2 fs-3 text-center"><h1>Moments</h1></div>
 		</footer>
+		<script src="/js/modules/moddal.js" differ></script>
 		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="/js/home.mjs" type="module"></script>
 		<script src="/js/nav-action.mjs" type="module"></script>

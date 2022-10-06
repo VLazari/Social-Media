@@ -54,6 +54,10 @@ export function addPostBody(method, title, body, tag, media) {
 	return options;
 }
 
+/**
+ * Executes a "put" request for specified URL
+ * @param {string} url Put request URL
+ */
 export async function putRequest(url) {
 	const options = {
 		method: "PUT",
@@ -80,4 +84,27 @@ export function deletePost(url) {
 			location.reload();
 		}
 	});
+}
+
+/**
+ * Comment on a post with a specified post id.
+ * @param {number} id Post id to comment.
+ */
+export async function sendComment(id) {
+	const message = document.getElementById("comment-input");
+	const url = `https://nf-api.onrender.com/api/v1/social/posts/${id}/comment`;
+	const options = {
+		method: "POST",
+		body: JSON.stringify({
+			body: message.value,
+		}),
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+			Authorization: currentUser.token,
+		},
+	};
+	if (message.value.trim() != "") {
+		await postData(url, options, 1);
+		message.value = "";
+	}
 }
