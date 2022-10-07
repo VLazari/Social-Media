@@ -16,7 +16,7 @@ if (isLogin() === false) {
 import { getData } from "/js/modules/API-access.mjs";
 
 const url = baseURL + "/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc&limit=10&offset=0";
-const posts = await getData(url);
+let posts = await getData(url);
 create.displayPost(posts);
 
 window.addEventListener("scroll", async () => {
@@ -24,8 +24,9 @@ window.addEventListener("scroll", async () => {
 	if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
 		pageDisplayOffset += 10;
 		const url = baseURL + `/posts?_author=true&_comments=true&_reactions=true&sort=created&sortOrder=desc&limit=10&offset=${pageDisplayOffset}`;
-		const posts = await getData(url);
-		create.displayPost(posts);
+		const nextPage = await getData(url);
+		nextPage.map((element) => posts.push(element));
+		create.displayPost(nextPage);
 	}
 });
 // >>><<<
