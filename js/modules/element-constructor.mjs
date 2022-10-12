@@ -190,6 +190,7 @@ export function profilePosts(data, displayClass) {
 		card.appendChild(bottomAction);
 
 		const like = createElement("i", "fa-regular fa-heart fa-xl mx-2 text-danger");
+		like.dataset.postId = post.id;
 		bottomAction.appendChild(like);
 
 		const comment = createElement("i", "fa-regular fa-comment fa-xl mx-2 text-primary");

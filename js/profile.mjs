@@ -1,12 +1,12 @@
 import { currentUser } from "/js/modules/user-data.mjs";
 import * as create from "/js/modules/element-constructor.mjs";
-import { getData } from "/js/modules/API-access.mjs";
+import * as api from "/js/modules/API-access.mjs";
 
 const queryUrl = location.search;
 const urlParams = new URLSearchParams(queryUrl);
 const userName = urlParams.get("name");
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
-const data = await getData(baseURL + `/profiles/${userName}?_posts=true&_following=true&_followers=true`);
+const data = await api.getData(baseURL + `/profiles/${userName}?_posts=true&_following=true&_followers=true`);
 
 // >>> Check if the profile page is for the current user or selected user <<<
 
@@ -19,7 +19,6 @@ if (userName == currentUser.name) {
 } else {
 	followUser.classList.remove("d-none");
 }
-// >>><<<
 
 // >>> Display the user avatar and name <<<
 
@@ -42,26 +41,22 @@ if (data.banner.trim() != "") {
 banner.style.backgroundImage = `url("${imgBanner}")`;
 followers.innerHTML += data._count.followers;
 following.innerHTML += data._count.following;
-// >>><<<
 
 // >>> Display the user's posts <<<
 
 create.profilePosts(data, displayClass);
-// >>><<<
+api.reactToPost(baseURL);
 
 // >>> Delete posts <<<
 
-import { deletePost } from "/js/modules/API-access.mjs";
 const delPost = document.querySelectorAll(".fa-trash");
 delPost.forEach((button) => {
 	button.addEventListener("click", (e) => {
-		deletePost(baseURL + `/posts/${button.dataset.postId}`);
+		api.deletePost(baseURL + `/posts/${button.dataset.postId}`);
 	});
 });
-// >>><<<
 
 // >>> Edit post <<<
-import { postData, addPostBody } from "/js/modules/API-access.mjs";
 
 const editBtn = document.querySelectorAll(".fa-file-pen");
 const editTitle = document.getElementById("add-post-title");
@@ -85,12 +80,11 @@ editBtn.forEach((button) => {
 			event.preventDefault();
 			const addPostUrl = baseURL + `/posts/${userId}`;
 			const tags = [editTags.value];
-			const options = addPostBody("PUT", editTitle.value.trim(), editBody.value.trim(), tags, editImage.value.trim());
-			postData(addPostUrl, options);
+			const options = api.addPostBody("PUT", editTitle.value.trim(), editBody.value.trim(), tags, editImage.value.trim());
+			api.postData(addPostUrl, options);
 		});
 	});
 });
-// >>><<<
 
 // >>> Edit profile <<<
 
@@ -127,11 +121,8 @@ editUserProf.addEventListener("click", async () => {
 		location.reload();
 	}
 });
-// >>><<<
 
 // >>> Follow / Unfollow user <<<
-
-import { putRequest } from "/js/modules/API-access.mjs";
 
 function checkStatus() {
 	followUser.innerHTML = "Follow";
@@ -147,7 +138,7 @@ function checkStatus() {
 let action = checkStatus();
 
 followUser.addEventListener("click", () => {
-	putRequest(baseURL + `/profiles/${userName}/${action}`);
+	api.putRequest(baseURL + `/profiles/${userName}/${action}`);
 	if (action === "follow") {
 		action = "unfollow";
 		followUser.innerHTML = "Unfollow";
@@ -156,11 +147,9 @@ followUser.addEventListener("click", () => {
 		followUser.innerHTML = "Follow";
 	}
 });
-// >>><<<
 
 // >>> Comment  <<<
 
-import { sendComment } from "/js/modules/API-access.mjs";
 const comments = document.querySelectorAll(".fa-comment");
 const postComment = document.getElementById("comment-btn");
 comments.forEach((comm) => {
@@ -171,7 +160,6 @@ comments.forEach((comm) => {
 });
 
 postComment.addEventListener("click", async () => {
-	await sendComment(postComment.dataset.id);
+	await api.sendComment(postComment.dataset.id);
 	create.displayComments(postComment.dataset.id);
 });
-// >>><<<

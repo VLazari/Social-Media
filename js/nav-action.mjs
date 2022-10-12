@@ -1,17 +1,15 @@
 import { currentUser } from "/js/modules/user-data.mjs";
-const { name, avatar } = currentUser;
-
-// >>> Display user main avatar <<<
+import { postData, addPostBody } from "/js/modules/API-access.mjs";
+import { getData } from "/js/modules/API-access.mjs";
+import { displaySearchResults } from "/js/modules/element-constructor.mjs";
 
 const mainAvatar = document.querySelector(".main-avatar");
-mainAvatar.style.backgroundImage = `url("${avatar}")`;
-// >>><<<
+mainAvatar.style.backgroundImage = `url("${currentUser.avatar}")`;
 
 // >>> Navigate to user profile page <<<
 
 const profile = document.getElementById("profile");
-profile.href = `/pages/profile.html?name=${name}`;
-// >>><<<
+profile.href = `/pages/profile.html?name=${currentUser.name}`;
 
 // >>> Logout current user <<<
 
@@ -20,11 +18,8 @@ logout.addEventListener("click", () => {
 	localStorage.clear();
 	location.replace("/index.html");
 });
-// >>><<<
 
 // >>> Add a new posts <<<
-
-import { postData, addPostBody } from "/js/modules/API-access.mjs";
 
 const baseURL = "https://nf-api.onrender.com/api/v1/social";
 const addPostUrl = baseURL + "/posts";
@@ -49,30 +44,32 @@ addPost.addEventListener("click", () => {
 		postData(addPostUrl, options);
 	});
 });
-// >>><<<
 
 // >>> Search for a user <<<
 
-import { getData } from "/js/modules/API-access.mjs";
-import { displaySearchResults } from "/js/modules/element-constructor.mjs";
-const displayResults = document.getElementById("search-results");
+const displaySearch = document.getElementById("search-results");
 const searchUser = document.getElementById("search");
-const data = await getData("https://nf-api.onrender.com/api/v1/social/profiles");
-const users = data.reverse().map(({ avatar, name }) => {
-	avatar = avatar.trim() == "" ? "https://xsgames.co/randomusers/avatar.php?g=female" : avatar;
-	displaySearchResults(displayResults, avatar, name);
-	return { name, avatar };
-});
+const searchUserModal = document.getElementById("search-user");
+const userData = await getData("https://nf-api.onrender.com/api/v1/social/profiles");
+
+searchUserModal.onclick = () => {
+	displaySearch.innerHTML = "";
+	userData.forEach((user) => {
+		user.avatar = user.avatar.trim() == "" ? "https://xsgames.co/randomusers/avatar.php?g=female" : user.avatar;
+		displaySearchResults(displaySearch, user.avatar, user.name);
+	});
+};
+
 function convertStr(string) {
 	return string.trim().toLowerCase();
 }
+
 searchUser.addEventListener("input", () => {
-	displayResults.innerHTML = "";
-	const searchResult = users.filter(({ name }) => convertStr(name).includes(convertStr(searchUser.value)));
+	displaySearch.innerHTML = "";
+	const searchResult = userData.filter(({ name }) => convertStr(name).includes(convertStr(searchUser.value)));
 	if (searchResult.length > 0 || convertStr(searchUser.value) == null) {
-		searchResult.forEach(({ name, avatar }) => displaySearchResults(displayResults, avatar, name));
+		searchResult.forEach(({ name, avatar }) => displaySearchResults(displaySearch, avatar, name));
 	} else {
-		displayResults.innerText = `No results found for "${searchUser.value}"`;
+		displaySearch.innerText = `No results found for "${searchUser.value}"`;
 	}
 });
-// >>><<<

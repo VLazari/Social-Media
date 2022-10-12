@@ -108,3 +108,19 @@ export async function sendComment(id) {
 		message.value = "";
 	}
 }
+
+/**
+ * Add a like to the post.
+ * @param {string} baseURL of the API.
+ */
+export function reactToPost(baseURL) {
+	const reactions = document.querySelectorAll(".fa-heart");
+	reactions.forEach((react) => {
+		react.addEventListener("click", () => {
+			const putURL = baseURL + `/posts/${react.dataset.postId}/react/❤️`;
+			react.classList.remove("fa-regular");
+			react.classList.add("fa-solid");
+			putRequest(putURL);
+		});
+	});
+}
