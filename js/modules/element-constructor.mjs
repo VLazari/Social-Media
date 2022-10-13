@@ -83,7 +83,7 @@ export function displayPost(posts) {
 		wrapDate.appendChild(dateTime);
 
 		const dateDay = createElement("small", "text-muted mx-2");
-		dateDay.innerText = post.updated.substr(0, 10);
+		dateDay.innerText = post.created.substr(0, 10);
 		wrapDate.appendChild(dateDay);
 	});
 }
@@ -116,7 +116,7 @@ export async function displayComments(id) {
 		const message = createElement("div", "d-flex align-items-center");
 		modalBody.appendChild(message);
 
-		const name = createElement("h6", " m-0 mx-1 text-primary");
+		const name = createElement("h6", " m-0 mx-1 mt-1 text-primary  align-self-start");
 		name.innerText = `${comment.owner}: `;
 		message.appendChild(name);
 
