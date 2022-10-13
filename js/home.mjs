@@ -19,6 +19,17 @@ function checkStatus() {
 }
 checkStatus();
 
+function viewPostById() {
+	const titles = document.querySelectorAll(".post-title");
+	titles.forEach((title) => {
+		title.addEventListener("click", async () => {
+			const url = `${baseURL}/posts/${title.dataset.postId}?_author=true`;
+			const post = await api.getData(url);
+			create.displayPostById(post);
+		});
+	});
+}
+
 function displayOnScroll() {
 	window.addEventListener("scroll", async () => {
 		if (window.innerHeight + window.pageYOffset > document.body.offsetHeight) {
@@ -28,6 +39,7 @@ function displayOnScroll() {
 			create.displayPost(nextPage);
 			comment.display(postComment);
 			api.reactToPost(baseURL);
+			viewPostById();
 		}
 	});
 }
@@ -63,3 +75,6 @@ api.reactToPost(baseURL);
 displayOnScroll();
 displayBySort();
 comment.process(postComment);
+viewPostById();
+
+console.log(posts);

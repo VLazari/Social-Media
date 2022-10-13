@@ -37,8 +37,7 @@ export function displayPost(posts) {
 		postAuthor.appendChild(authorName);
 
 		const wrapImg = createElement("img", "");
-		let i = Math.floor(Math.random() * 100);
-		let mediaImg = `https://picsum.photos/800/600?random=${i}`;
+		let mediaImg = `https://i.picsum.photos/id/1056/3988/2720.jpg?hmac=qX6hO_75zxeYI7C-1TOspJ0_bRDbYInBwYeoy_z_h08`;
 		if (post.media.trim() != "") {
 			mediaImg = post.media;
 		}
@@ -49,7 +48,7 @@ export function displayPost(posts) {
 		const cardBody = createElement("div", "card-body");
 		wrapContainer.appendChild(cardBody);
 
-		const postHeart = createElement("i", "fa-regular fa-heart fa-xl mx-2 text-danger");
+		const postHeart = createElement("i", "fa-regular fa-heart fa-xl mx-2 text-danger p-3");
 		postHeart.dataset.postId = post.id;
 		cardBody.appendChild(postHeart);
 
@@ -57,7 +56,7 @@ export function displayPost(posts) {
 		heartCount.innerText = post._count.reactions;
 		cardBody.appendChild(heartCount);
 
-		const postComment = createElement("i", "fa-regular fa-comment fa-xl mx-2 text-primary");
+		const postComment = createElement("i", "fa-regular fa-comment fa-xl mx-2 text-primary p-3");
 		postComment.dataset.postId = post.id;
 		postComment.dataset.bsToggle = "modal";
 		postComment.dataset.bsTarget = "#commentModal";
@@ -67,7 +66,10 @@ export function displayPost(posts) {
 		commentCount.innerText = post._count.comments;
 		cardBody.appendChild(commentCount);
 
-		const wrapTitle = createElement("div", "card-body card-text fw-semibold my-0 py-0");
+		const wrapTitle = createElement("i", "card-body card-text fw-semibold my-0 py-0 text-primary post-title");
+		wrapTitle.dataset.postId = post.id;
+		wrapTitle.dataset.bsToggle = "modal";
+		wrapTitle.dataset.bsTarget = "#postByIdModal";
 		wrapTitle.innerText = post.title;
 		wrapContainer.appendChild(wrapTitle);
 
@@ -79,7 +81,7 @@ export function displayPost(posts) {
 		wrapContainer.appendChild(wrapDate);
 
 		const dateTime = createElement("small", "text-muted");
-		dateTime.innerText = post.updated.substr(11, 5);
+		dateTime.innerText = post.created.substr(11, 5);
 		wrapDate.appendChild(dateTime);
 
 		const dateDay = createElement("small", "text-muted mx-2");
@@ -177,8 +179,7 @@ export function profilePosts(data, displayClass) {
 		headAction.appendChild(delPost);
 
 		const img = createElement("img", "");
-		let i = Math.floor(Math.random() * 100);
-		let mediaImg = `https://picsum.photos/800/600?random=${i}`;
+		let mediaImg = `https://i.picsum.photos/id/1056/3988/2720.jpg?hmac=qX6hO_75zxeYI7C-1TOspJ0_bRDbYInBwYeoy_z_h08`;
 		if (post.media.trim() != "") {
 			mediaImg = post.media;
 		}
@@ -189,11 +190,11 @@ export function profilePosts(data, displayClass) {
 		const bottomAction = createElement("div", "card-body");
 		card.appendChild(bottomAction);
 
-		const like = createElement("i", "fa-regular fa-heart fa-xl mx-2 text-danger");
+		const like = createElement("i", "fa-regular fa-heart fa-xl mx-2 text-danger p-3");
 		like.dataset.postId = post.id;
 		bottomAction.appendChild(like);
 
-		const comment = createElement("i", "fa-regular fa-comment fa-xl mx-2 text-primary");
+		const comment = createElement("i", "fa-regular fa-comment fa-xl mx-2 text-primary p-3");
 		comment.dataset.postId = post.id;
 		comment.dataset.bsToggle = "modal";
 		comment.dataset.bsTarget = "#commentModal";
@@ -211,11 +212,11 @@ export function profilePosts(data, displayClass) {
 		card.appendChild(wrapDate);
 
 		const dateTime = createElement("small", "text-muted");
-		dateTime.innerText = post.updated.substr(11, 5);
+		dateTime.innerText = post.created.substr(11, 5);
 		wrapDate.appendChild(dateTime);
 
 		const dateDay = createElement("small", "text-muted mx-2");
-		dateDay.innerText = post.updated.substr(0, 10);
+		dateDay.innerText = post.created.substr(0, 10);
 		wrapDate.appendChild(dateDay);
 	});
 }
@@ -232,4 +233,41 @@ export function displaySearchResults(results, userAvatar, userName) {
 	const name = createElement("h6", "m-0 user-name");
 	name.innerText = userName;
 	container.appendChild(name);
+}
+
+export function displayPostById(post) {
+	const header = document.getElementById("post-by-id-header");
+	const body = document.getElementById("post-by-id-body");
+	const footer = document.getElementById("post-by-id-footer");
+	header.innerHTML = "";
+	body.innerHTML = "";
+	footer.innerHTML = "";
+
+	const avatarImg = createElement("div", "mx-3 avatar-img");
+	let avatarImgUrl = "https://xsgames.co/randomusers/avatar.php?g=female";
+	if (post.author.avatar.trim() != "") {
+		avatarImgUrl = post.author.avatar;
+	}
+	avatarImg.style.backgroundImage = `url("${avatarImgUrl}")`;
+	header.appendChild(avatarImg);
+
+	const authorName = createElement("h6", "m-0 user-name");
+	authorName.innerText = post.author.name;
+	header.appendChild(authorName);
+
+	const wrapImg = createElement("div", "cover-photo");
+	let mediaImg = `https://i.picsum.photos/id/1056/3988/2720.jpg?hmac=qX6hO_75zxeYI7C-1TOspJ0_bRDbYInBwYeoy_z_h08`;
+	if (post.media.trim() != "") {
+		mediaImg = post.media;
+	}
+	wrapImg.style.backgroundImage = `url("${mediaImg}")`;
+	body.appendChild(wrapImg);
+
+	const wrapTitle = createElement("div", "card-body card-text fw-semibold my-0 py-0");
+	wrapTitle.innerText = post.title;
+	footer.appendChild(wrapTitle);
+
+	const wrapBody = createElement("div", "card-body card-text my-0 py-0");
+	wrapBody.innerText = post.body;
+	footer.appendChild(wrapBody);
 }

@@ -17,14 +17,12 @@ const banner = document.getElementById("banner");
 const followers = document.getElementById("followers");
 const following = document.getElementById("following");
 let avatarImgUrl = "https://xsgames.co/randomusers/avatar.php?g=female";
-const editBtn = document.querySelectorAll(".fa-file-pen");
 const editTitle = document.getElementById("add-post-title");
 const editBody = document.getElementById("add-post-body");
 const editTags = [document.getElementById("add-post-tags")];
 const editImage = document.getElementById("add-post-image");
 const editPostForm = document.getElementById("add-post-form");
 const postBtn = document.getElementById("post-btn");
-const delPost = document.querySelectorAll(".fa-trash");
 const postComment = document.getElementById("comment-btn");
 const editUserProf = document.getElementById("change-prof-btn");
 const editBanner = document.getElementById("edit-banner");
@@ -49,8 +47,7 @@ function displayUserProfile() {
 	}
 	avatar.style.backgroundImage = `url("${avatarImgUrl}")`;
 	name.forEach((element) => (element.innerHTML = data.name));
-	let i = Math.floor(Math.random() * 100);
-	let imgBanner = `https://picsum.photos/800/600?random=${i}`;
+	let imgBanner = `https://i.picsum.photos/id/1056/3988/2720.jpg?hmac=qX6hO_75zxeYI7C-1TOspJ0_bRDbYInBwYeoy_z_h08`;
 	if (data.banner.trim() != "") {
 		imgBanner = data.banner;
 	}
@@ -60,14 +57,17 @@ function displayUserProfile() {
 }
 
 function deletePost() {
+	const delPost = document.querySelectorAll(".fa-trash");
 	delPost.forEach((button) => {
 		button.addEventListener("click", (e) => {
+			console.log("button");
 			api.deletePost(baseURL + `/posts/${button.dataset.postId}`);
 		});
 	});
 }
 
 function editPost() {
+	const editBtn = document.querySelectorAll(".fa-file-pen");
 	editBtn.forEach((button) => {
 		button.addEventListener("click", () => {
 			userId = button.dataset.postId;
