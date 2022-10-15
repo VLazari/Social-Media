@@ -1,5 +1,5 @@
-const baseURL = "https://nf-api.onrender.com/api/v1/social";
 import * as api from "/js/modules/API-access.mjs";
+const baseURL = "https://nf-api.onrender.com/api/v1/social";
 
 /**
  * Create an element with it's class
