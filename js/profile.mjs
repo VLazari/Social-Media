@@ -32,6 +32,10 @@ let newAvatar = document.getElementById("new-avatar");
 const url = baseURL + `/profiles/${currentUser.name}/media`;
 let userId = "";
 
+/**
+ * Check if the profile page is for the current or selected user.
+ * Used to modify page functionality depending on type of user.
+ */
 function checkForCurrentUserProfile() {
 	if (userName == currentUser.name) {
 		displayClass = "d-inline-block";
@@ -41,6 +45,9 @@ function checkForCurrentUserProfile() {
 	}
 }
 
+/**
+ * Displays the user profile data and posts.
+ */
 function displayUserProfile() {
 	if (data.avatar.trim() != "") {
 		avatarImgUrl = data.avatar;
@@ -66,6 +73,9 @@ function deletePost() {
 	});
 }
 
+/**
+ * Edit post functionality for current user profile.
+ */
 function editPost() {
 	const editBtn = document.querySelectorAll(".fa-file-pen");
 	editBtn.forEach((button) => {
@@ -88,6 +98,10 @@ function editPost() {
 	});
 }
 
+/**
+ * Check if the current user is following the selected user.
+ * @returns follow or unfollow;
+ */
 function checkStatus() {
 	followUser.innerHTML = "Follow";
 	let action = "follow";
@@ -100,6 +114,9 @@ function checkStatus() {
 	return action;
 }
 
+/**
+ * Executes the follow or unfollow commands respectively.
+ */
 function processFollowUser() {
 	followUser.addEventListener("click", () => {
 		api.putRequest(baseURL + `/profiles/${userName}/${action}`);
@@ -113,11 +130,17 @@ function processFollowUser() {
 	});
 }
 
+/**
+ * Used for preview changes on profile edit.
+ */
 function profPreview() {
 	newBanner.style.backgroundImage = `url("${editBanner.value}")`;
 	newAvatar.style.backgroundImage = `url("${editAvatar.value}")`;
 }
 
+/**
+ * Executes the selected profile changes.
+ */
 function processProfileEdit() {
 	editUserProf.addEventListener("click", async () => {
 		const options = {
@@ -139,6 +162,9 @@ function processProfileEdit() {
 	});
 }
 
+/**
+ * Edit and preview the current user profile.
+ */
 function editOwnerProfile() {
 	editBanner.value = data.banner;
 	editAvatar.value = currentUser.avatar;

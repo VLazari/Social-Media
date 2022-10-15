@@ -12,6 +12,9 @@ let sortBy = "created";
 let url = baseURL + `/posts?_author=true&_comments=true&_reactions=true&sort=${sortBy}&sortOrder=desc&limit=10&offset=${pageDisplayOffset}`;
 let posts = await api.getData(url);
 
+/**
+ * Check if the user is logged in. Prevent unauthorized access through the link.
+ */
 function checkStatus() {
 	if (isLogin() === false) {
 		location.replace("/index.html");
@@ -19,6 +22,9 @@ function checkStatus() {
 }
 checkStatus();
 
+/**
+ * Display the post content in a modal window.
+ */
 function viewPostById() {
 	const titles = document.querySelectorAll(".post-title");
 	titles.forEach((title) => {
@@ -30,6 +36,9 @@ function viewPostById() {
 	});
 }
 
+/**
+ * Fetch the API and add ten more posts when scrolling to the bottom of the page.
+ */
 function displayOnScroll() {
 	window.addEventListener("scroll", async () => {
 		if (window.innerHeight + window.pageYOffset > document.body.offsetHeight) {
@@ -44,6 +53,10 @@ function displayOnScroll() {
 	});
 }
 
+/**
+ * Sort the posts by date or title.
+ * @returns sort type.
+ */
 function sortPostBy() {
 	let sort = "created";
 	sortBtn.forEach((btn) => {
@@ -52,6 +65,9 @@ function sortPostBy() {
 	return sort;
 }
 
+/**
+ * Display the posts sorted by selected type.
+ */
 function displayBySort() {
 	sortBtn.forEach((btn) => {
 		btn.addEventListener("click", async () => {

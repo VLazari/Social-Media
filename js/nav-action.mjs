@@ -28,10 +28,18 @@ logout.addEventListener("click", () => {
 	location.replace("/index.html");
 });
 
+/**
+ * Convert the string to lower case and removes the before and after spaces.
+ * @param {string} string
+ * @returns Converted string
+ */
 function convertStr(string) {
 	return string.trim().toLowerCase();
 }
 
+/**
+ * Add a new post.
+ */
 function addNewPost() {
 	addPost.addEventListener("click", () => {
 		addTitle.value = "";
@@ -48,6 +56,9 @@ function addNewPost() {
 	});
 }
 
+/**
+ * Initiate the search modal.
+ */
 function searchModal() {
 	searchUserModal.onclick = () => {
 		displaySearch.innerHTML = "";
@@ -58,6 +69,9 @@ function searchModal() {
 	};
 }
 
+/**
+ * Search a user by the input value.
+ */
 function filterUsers() {
 	searchUser.addEventListener("input", () => {
 		displaySearch.innerHTML = "";
