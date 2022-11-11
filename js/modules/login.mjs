@@ -70,7 +70,7 @@ export async function loginUser() {
 		localStorage.setItem("avatar", json.avatar);
 		localStorage.setItem("email", json.email);
 		localStorage.setItem("token", json.accessToken);
-		location.replace("../../pages/home.html");
+		location.replace("/pages/home.html");
 	} else {
 		const loginError = document.getElementById("login-error");
 		loginError.classList.remove("d-none");

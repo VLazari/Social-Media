@@ -1,25 +1,28 @@
-// >>> Redirect the logged in user to home page <<<
-import isLogin from "./modules/login-check.mjs";
-if (isLogin()) {
-	location.replace("../pages/home.html");
+import isLogin from "/js/modules/login-check.mjs";
+import { registerUser } from "/js/modules/login.mjs";
+import { loginUser } from "/js/modules/login.mjs";
+
+function checkStatus() {
+	if (isLogin()) {
+		location.replace("/pages/home.html");
+	}
 }
+checkStatus();
 
-// >>> Register a new user <<<
-import { registerUser } from "./modules/login.mjs";
-const signUp = document.getElementById("sign-up");
-signUp.addEventListener("submit", (event) => {
-	event.preventDefault();
-	registerUser();
-});
-// >>><<<
+function regNewUser() {
+	const signUp = document.getElementById("sign-up");
+	signUp.addEventListener("submit", (event) => {
+		event.preventDefault();
+		registerUser();
+	});
+}
+regNewUser();
 
-// >>> Login to the site <<<
-import { loginUser } from "./modules/login.mjs";
-const login = document.getElementById("login");
-login.addEventListener("submit", (event) => {
-	event.preventDefault();
-	loginUser();
-});
-// >>><<<
-
-// localStorage.clear();
+function logUser() {
+	const login = document.getElementById("login");
+	login.addEventListener("submit", (event) => {
+		event.preventDefault();
+		loginUser();
+	});
+}
+logUser();

@@ -5,65 +5,69 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Moments | Profile</title>
+		<script src="https://kit.fontawesome.com/982222d327.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/dist/css/style.css" />
 	</head>
 	<body>
 		<!-- Navigation bar -->
 		<header class="sticky-top">
-			<nav class="navbar navbar-expand-lg bg-light">
+			<nav class="navbar navbar-expand bg-light">
 				<div class="container-fluid container">
+					<a class="nav-link mx-3 d-flex justify-content-center align-items-center" href="">
+						<div class="main-avatar"></div>
+					</a>
 					<a class="navbar-brand mx-auto" href="home.html"><h1>Moments</h1></a>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarResponsive"
-						aria-controls="navbarResponsive"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarResponsive">
-						<ul class="navbar-nav mx-auto">
-							<li class="nav-item">
-								<a class="nav-link activ px-5 py-3 d-flex justify-content-center align-items-center" href="home.html">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon">
-										<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-										<path
-											d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
-										/>
-									</svg>
-									<div class="ms-3 text-primary">Home</div>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link px-5 py-3 d-flex justify-content-center align-items-center" href="profile.html">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
-										<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-										<path
-											d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
-										/>
-									</svg>
-									<div class="ms-3 text-primary">Profile</div>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link px-5 py-3 d-flex justify-content-center align-items-center" href="../index.html">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
-										<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-										<path
-											d="M160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96C43 32 0 75 0 128V384c0 53 43 96 96 96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H96c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32h64zM504.5 273.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32H320v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z"
-										/>
-									</svg>
-									<div class="ms-3 text-primary">Logout</div>
-								</a>
-							</li>
-						</ul>
-						<form class="d-flex" role="search">
-							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-							<button class="btn btn-outline-success" type="submit">Search</button>
-						</form>
+					<ul class="navbar-nav d-flex flex-row justify-content-evenly justify-content-md-center align-items-center mobile-nav">
+						<li class="nav-item mx-md-3">
+							<a class="nav-link activ px-3 py-4" href="home.html">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon">
+									<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+									<path
+										d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+									/>
+								</svg>
+							</a>
+						</li>
+						<li class="nav-item mx-md-3">
+							<a id="profile" class="nav-link px-3 py-4">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
+									<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+									<path
+										d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+									/>
+								</svg>
+							</a>
+						</li>
+						<li class="nav-item mx-md-3">
+							<div id="add-post" class="px-3 py-4" data-bs-toggle="modal" data-bs-target="#addPostModal">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
+									<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+									<path
+										d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+									/>
+								</svg>
+							</div>
+						</li>
+						<li class="nav-item mx-md-3">
+							<div id="search-user" class="px-3 py-4" data-bs-toggle="modal" data-bs-target="#searchUserModal">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
+									<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+									<path
+										d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"
+									/>
+								</svg>
+							</div>
+						</li>
+					</ul>
+					<div class="nav-item mx-md-3">
+						<a id="logout" class="nav-link px-3 py-4" href="/index.html">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
+								<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+								<path
+									d="M160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96C43 32 0 75 0 128V384c0 53 43 96 96 96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H96c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32h64zM504.5 273.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32H320v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z"
+								/>
+							</svg>
+						</a>
 					</div>
 				</div>
 			</nav>
@@ -72,40 +76,69 @@
 			<!-- Profile Info -->
 			<div class="card my-2 bg-light">
 				<div>
-					<div class="cover-photo"></div>
-					<div class="d-flex flex-column flex-md-row align-items-center mx-3">
-						<div class="img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
-						<div class="card-body mx-3">
-							<h3>User Name</h3>
-							<h5>Email</h5>
-							<p class="card-text"><small class="text-muted">Day of birth: 08 Mar 1974</small></p>
+					<div id="banner" class="cover-photo"></div>
+					<div class="d-flex flex-wrap align-items-center justify-content-right mx-3">
+						<div class="avatar-img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
+						<h3 class="user-name my-0 mx-2"></h3>
+						<div id="follow-user" class="btn btn-primary px-4 mx-auto d-none">Follow</div>
+						<div id="edit-profile" class="btn btn-primary px-4 mx-auto d-none" data-bs-toggle="modal" data-bs-target="#editProfModal">
+							Edit Profile
+						</div>
+						<div class="d-flex flex-sm-column mx-3">
+							<p class="card-text m-3"><small id="followers" class="text-muted">Followers: </small></p>
+							<p class="card-text m-3"><small id="following" class="text-muted">Following: </small></p>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- Feeds -->
-			<div class="d-flex flex-column">
-				<div class="card mx-0 my-3 bg-light border border-primary rounded border-opacity-25">
-					<div class="p-3 d-flex align-items-center">
-						<div class="mx-3 img"></div>
-						<div class="">User name</div>
+			<!-- Posts -->
+			<div class="posts d-flex flex-column"></div>
+			<!-- Add post -  modal -->
+			<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostLabel" aria-hidden="true"></div>
+			<!-- Edit profile -  modal -->
+			<div class="modal fade" id="editProfModal" tabindex="-1" aria-labelledby="editProfLabel" aria-hidden="true">
+				<div class="modal-dialog modal-fullscreen-sm-down">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="fs-4 mx-2">Moments</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<!--  -->
+							<div id="new-banner" class="cover-photo"></div>
+							<div class="d-flex flex-wrap align-items-center justify-content-right mx-3">
+								<div id="new-avatar" class="avatar-img prof-img m-left-3 border border-5 rounded-circle border-light"></div>
+							</div>
+							<!--  -->
+							<div class="d-flex flex-column">
+								<div class="my-3">
+									<label for="edit-banner">Banner URL</label>
+									<input id="edit-banner" type="text" class="form-control" placeholder="Banner URL" aria-label="banner" />
+								</div>
+								<div class="my-3">
+									<label for="edit-avatar">Avatar URL</label>
+									<input id="edit-avatar" type="text" class="form-control" placeholder="Avatar URL" aria-label="avatar" />
+								</div>
+							</div>
+							<div class="modal-footer d-flex justify-content-evenly">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<button id="change-prof-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Edit Profile</button>
+							</div>
+						</div>
 					</div>
-					<div class="card-body">
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					</div>
-					<img src="../img/img-demo.jpg" class="card-img-top" />
-
-					<div class="card-body">
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-					</div>
-					<p class="card-text m-2 mx-3"><small class="text-muted"> 22 hours ago </small></p>
 				</div>
 			</div>
+			<!-- Comment on post - modal -->
+			<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentLabel" aria-hidden="true"></div>
+			<!-- Search user - modal -->
+			<div class="modal fade" id="searchUserModal" tabindex="-1" aria-labelledby="searchUserLabel" aria-hidden="true"></div>
 		</main>
 		<footer>
 			<div class="container-fluid border border-2 fs-3 text-center"><h1>Moments</h1></div>
 		</footer>
+		<script src="/js/modules/moddal.js" differ></script>
 		<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/profile.mjs" type="module"></script>
+		<script src="/js/nav-action.mjs" type="module"></script>
 	</body>
 </html>
